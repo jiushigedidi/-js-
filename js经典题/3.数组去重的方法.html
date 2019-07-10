@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+			
+		// 1.es5方法
+
+
+		var arr = [1, 2, 3, 4, 2, 1, 3, 4, 5]
+
+
+		function filter(oldArray) {
+
+			var newArray = []
+
+			for(var i = 0; i < oldArray.length; i++) {
+
+				if(newArray.indexOf(oldArray[i]) === -1) {
+
+					newArray.push(oldArray[i])
+				}
+			}
+
+			return newArray
+
+
+		}
+
+
+		console.log(filter(arr))
+
+
+		// 2.第二种es6 Set数据结构(js高级最后一天会学) set数据 + 扩展运算符
+
+		var arr1 = [3, 3, 2, 1, 2, 4, 5, 4]
+
+		var arr2 = new Set(arr1)
+
+		var newArray = [...arr2]
+
+		console.log(newArray)
+
+		
+		
+	</script>
+</body>
+</html>

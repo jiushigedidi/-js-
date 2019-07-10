@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		function Person()  {
+			this.name = 'lizi',
+			this.age = 18,
+			this.sex =  '男',
+			this.sayhi= function() {
+				console.log('hi')
+			}
+		}
+
+		Person.prototype.play = function (){
+			console.log('play')
+		}
+		function Student() {
+			this.score = 100
+		}
+
+		Student.prototype = new Person(); // Student的原型对象指向Person的实例
+		Student.prototype.constructor = Student;
+		
+		var s1 = new Student()
+		var s2 = new Student()
+		s2.name = '嘻嘻'
+		console.dir(s1)
+		console.dir(s2)
+		console.dir(s2.name)
+		console.dir(s1.constructor)
+		console.dir(s2.constructor)
+		s1.sayhi()
+		s1.play()
+		s2.sayhi()
+		s2.play()
+
+		// 为了数据共享,改变原型指向,做到了继承---通过改变原型指向实现的继承
+		// 缺点: 因为改变原型指向的同时实现继承,直接初始化了属性,继承过来的属性都是一样的,但是实例之间属性可能是不同的.
+
+		// 解决办法:只能重新调用对象的属性来重新赋值
+	</script>
+</body>
+</html>

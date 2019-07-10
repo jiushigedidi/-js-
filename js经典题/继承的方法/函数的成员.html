@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		
+		function fn(x, y, n) {
+			console.dir(fn)
+
+			console.log(fn.name)  // 函数名字
+
+			console.log(fn.length) // 形参个数
+
+			console.log(fn.caller) // 函数的调用者
+
+			console.log(arguments)  // 实参数组 --- 伪数组
+
+			console.log(arguments.callee)  // 函数本身 --- fn
+		}
+
+	function f() {
+		fn(1, 2, 3, 4)
+	}
+
+	f()
+
+
+
+	</script>
+</body>
+</html>

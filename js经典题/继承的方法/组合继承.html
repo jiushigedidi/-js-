@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		function Person(name,age,sex) {
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+			this.say = function() {
+				console.log('say')
+			}
+		}
+
+		Person.prototype.play = function() {
+			console.log('play')
+		}
+
+		function Student(name, age, sex ,score) {
+			// 借用构造函数: 解决属性 重复的问题
+			Person.call(this, name, age, sex)
+			this.score = score;
+		}
+
+
+		Student.prototype = new Person()
+		// 原型继承: 解决不能继承父类原型对象上的方法问题
+		Student.prototype.constructor = Student
+		Student.prototype.look = function() {
+			console.log('look')
+		}
+
+		var s1 = new Student('梨子', 18, '男',100)
+
+		console.dir(s1)
+		s1.look()
+
+
+		// 组合继承 = 原型继承 + 借用构造函数继承
+	</script>
+</body>
+</html>

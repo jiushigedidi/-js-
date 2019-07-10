@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		// ---------- 浅拷贝 ----------
+		// 属性赋值是浅拷贝, 复杂数据类型复制的是引用地址，所以会导致原内容被修改。
+		let obj1 = {
+			name: 'lili',
+			age: 18,
+			dog: {
+				name: '大黄',
+				age: 5,
+				yellow: 'pink'
+			},
+			friends: ['lilei', 'hanmeimei'],
+			look: function() {
+				console.log('一个人');
+			},
+			say(){
+				console.log('ai');
+			}
+		}
+
+		let obj2 = {};
+
+
+		function copy(o1,o2) {
+			for(let key in o1) {
+				o2[key] = o1[key];
+			}
+			return o2;
+		}
+		
+		console.log(copy(obj1, obj2));
+		console.log(copy(obj1, obj2).name);
+		console.log(copy(obj1, obj2)['age']);
+		console.log(copy(obj1, obj2).dog);
+		console.log(copy(obj1, obj2).friends);
+		copy(obj1, obj2).say();
+		copy(obj1, obj2).look();
+
+
+		// ----------- 深拷贝 ------------
+		var obj3 = {};
+		function deepCopy(obj1, obj2) {
+			for(let key in obj1) {
+				if(obj1[key] instanceof Array) {
+					obj2[key] = [];
+					deepCopy(obj1[key], obj2[key]);
+				} else if(obj1[key] instanceof Object) {
+					obj2[key] = {};
+					deepCopy(obj1[key], obj2[key]);
+
+				} else {
+					obj2[key] = obj1[key];
+				}
+			} 
+		}
+		deepCopy(obj1, obj3);
+		console.log(obj3);
+		console.log(obj3.dog);
+		console.log(obj3.friends);
+		obj1.dog.age = 10;
+		obj1.age = 20;
+		obj1.friends[0] = 'lileiya';
+		// console.log(undefined instanceof Object); false
+
+		var a = ['pink', 'red'];
+		for(var key in a) {
+			console.log( key + '-------------' + a[key]);
+		}
+	</script>
+</body>
+</html>

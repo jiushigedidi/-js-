@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		function Person(name,age,sex) {
+			this.name = name;
+			this.age = age;
+			this.sex = sex;
+			this.play = function() {
+				console.log('play')
+			}
+		}
+
+		Person.prototype.sayHi = function() {
+			console.log('ok')
+		}
+
+		function Student(name, age, sex, score) {
+			Person.call(this, name, age, sex);
+			this.score = score;
+		}
+		
+		var s1 = new Student('lizi', 18, '男', 100)
+		var s2 = new Student('哈哈哈', 20, '女', 100)
+		console.dir(s1)
+		console.dir(s2)
+		s1.play()
+		s2.play()
+		// s1.sayHi() 报错
+
+		// 优点: 解决了属性继承,并且值不重复的问题
+		// 缺点: 父类原型对象上的方法不能继承
+	</script>
+</body>
+</html>
